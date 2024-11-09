@@ -1,11 +1,11 @@
-/* =======================================
-Actividad 1.1
-Algoritmo de ordenamiento merge sort
-
-Autor: Luis Adrian Amado Alvarez A01571393
-Fecha de creacion: 11/08/2024
-Ultima modificacion: 15/08/2024
-========================================*/
+/*
+ * Actividad 1.1
+ * Algoritmo de ordenamiento merge sort
+ *
+ * Autor: Luis Adrian Amado Alvarez A01571393
+ * Fecha de creacion: 11/08/2024
+ * Ultima modificacion: 15/08/2024
+*/
 
 #include <iostream>
 #include <vector>
@@ -20,7 +20,7 @@ Ultima modificacion: 15/08/2024
 // Complejidad 
 //   temporal: O(n log n) *todos los casos
 //   espacial: O(n)
-void mergeSortRecursive(std::vector<double>& nums, int start, int end, std::vector<double>& buffer) {
+void merge_sort_recursive(std::vector<double>& nums, int start, int end, std::vector<double>& buffer) {
 
   // Un subarreglo de un elemento ya esta en orden
   if (start == end) {
@@ -29,8 +29,8 @@ void mergeSortRecursive(std::vector<double>& nums, int start, int end, std::vect
 
   // Dividir el subarreglo en otros 2 subarreglos por la mitad
   int midpoint = (start + end) / 2;
-  mergeSortRecursive(nums, start, midpoint, buffer);
-  mergeSortRecursive(nums, midpoint + 1, end, buffer);
+  merge_sort_recursive(nums, start, midpoint, buffer);
+  merge_sort_recursive(nums, midpoint + 1, end, buffer);
 
   // Copiar el subarreglo al espacio temporal
   for (int i = start, bufIndex = 0; i <= end; i++, bufIndex++) {
@@ -61,7 +61,7 @@ void mergeSortRecursive(std::vector<double>& nums, int start, int end, std::vect
 // Complejidad 
 //   temporal: O(n log n) *todos los casos
 //   espacial: O(n)
-void mergeSort(std::vector<double>& nums) {
+void merge_sort(std::vector<double>& nums) {
 
   // Un arreglo de 1 elemento o menos ya esta en orden
   if (nums.size() <= 1) {
@@ -71,8 +71,8 @@ void mergeSort(std::vector<double>& nums) {
   // Crear un espacio de memoria con el mismo tamano que el vector original
   std::vector<double> buffer(nums.size());
 
-  // Llamar la funcion recursiva, tomando todo el vector como el primer subarreglo
-  mergeSortRecursive(nums, 0, nums.size() - 1, buffer);
+  // Llamar la funcion recursiva, tomando el vector entero como el primer subarreglo
+  merge_sort_recursive(nums, 0, nums.size() - 1, buffer);
 }
 
 int main() {
@@ -89,7 +89,7 @@ int main() {
   }
 
   // Ordenar los numeros
-  mergeSort(nums);
+  merge_sort(nums);
 
   // Mostrar los numeros ordenados
   std::cout << "\nNumeros ordenados: ";
